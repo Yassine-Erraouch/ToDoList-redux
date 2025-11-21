@@ -1,0 +1,490 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.futuristic-app {
+  min-height: 100vh;
+  background: #0a0e27;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+.grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.futuristic-container {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.futuristic-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title-main {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  color: #00ffff;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff,
+    0 0 40px #0088ff;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.title-sub {
+  font-size: 0.9rem;
+  letter-spacing: 0.2rem;
+  color: #00ffff;
+  opacity: 0.7;
+  font-family: monospace;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.header-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  margin-top: 1rem;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.futuristic-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.futuristic-input {
+  padding: 1rem 1.5rem;
+  width: 85%;
+  font-size: 1rem;
+  background: rgba(0, 20, 40, 0.8);
+  border: 2px solid #00ffff;
+  border-radius: 0;
+  color: #00ffff;
+  font-family: monospace;
+  transition: all 0.3s;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.futuristic-input::placeholder {
+  color: rgba(0, 255, 255, 0.5);
+}
+
+.futuristic-input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 30px rgba(0, 255, 255, 0.5);
+  border-color: #00ffff;
+}
+
+.futuristic-btn {
+  padding: 1rem 2rem;
+  width: 30%;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  font-family: monospace;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+.futuristic-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.5),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.futuristic-btn:active {
+  transform: translateY(0);
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-card {
+  position: relative;
+  background: rgba(0, 20, 40, 0.6);
+  border: 2px solid #00ffff;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.task-card:hover {
+  background: rgba(0, 30, 60, 0.8);
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.task-card.completed {
+  opacity: 0.5;
+  border-color: #00ff88;
+}
+
+.task-card.completed .task-text {
+  text-decoration: line-through;
+  color: #00ff88;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.task-checkbox {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid #00ffff;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.task-checkbox:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.checkbox-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  color: #00ff88;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.task-text {
+  flex: 1;
+  color: #00ffff;
+  font-size: 1.1rem;
+  font-family: monospace;
+  letter-spacing: 0.05rem;
+}
+
+.delete-btn {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 0, 100, 0.1);
+  border: 2px solid #ff0066;
+  color: #ff0066;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 0, 100, 0.3);
+  box-shadow: 0 0 20px rgba(255, 0, 100, 0.5);
+  transform: rotate(90deg);
+}
+
+.delete-icon {
+  line-height: 1;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.hologram-text {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  color: #00ffff;
+  opacity: 0.3;
+  font-family: monospace;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: scan 2s linear infinite;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(200px);
+  }
+}
+
+@media (max-width: 640px) {
+  .title-main {
+    font-size: 2rem;
+  }
+
+  .futuristic-form {
+    flex-direction: column;
+  }
+
+  .futuristic-btn {
+    width: 100%;
+  }
+}
+
+/* Filter Styles */
+.filter-container {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 20, 40, 0.6);
+  border: 2px solid #00ffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.filter-label {
+  color: #00ffff;
+  font-family: monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  opacity: 0.8;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-family: monospace;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn:hover {
+  background: rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: rgba(0, 255, 255, 0.3);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.6),
+    inset 0 0 20px rgba(0, 255, 255, 0.3);
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.filter-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .filter-buttons {
+    flex-direction: column;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+}
+/* 
+Edit Functionality Styles */
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.task-edit-input {
+  flex: 1;
+  padding: 0.5rem;
+  background: rgba(0, 20, 40, 0.9);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-family: monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  transition: all 0.3s;
+  box-shadow:
+    inset 0 0 10px rgba(0, 255, 255, 0.2),
+    0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.task-edit-input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 255, 0.3),
+    0 0 25px rgba(0, 255, 255, 0.5);
+}
+
+.edit-btn,
+.save-btn,
+.cancel-btn {
+  width: 35px;
+  height: 35px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.edit-btn {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00ffff;
+  color: #00ffff;
+}
+
+.edit-btn:hover {
+  background: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.save-btn {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.save-btn:hover {
+  background: rgba(0, 255, 136, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  transform: scale(1.1);
+}
+
+.cancel-btn {
+  background: rgba(255, 165, 0, 0.1);
+  border-color: #ffa500;
+  color: #ffa500;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 165, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.edit-icon,
+.save-icon,
+.cancel-icon {
+  line-height: 1;
+}
