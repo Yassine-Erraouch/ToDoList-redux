@@ -9,35 +9,40 @@ const loadFromLocalStorage = () => {
   }
 };
 
-const initialState = loadFromLocalStorage();
+const initialState = {
+  todos: loadFromLocalStorage(),
+  filter: 'all' // 'all', 'completed', 'notCompleted'
+};
 
 const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.push({
+      state.todos.push({
         id: Date.now(),
         text: action.payload,
         completed: false,
         createdAt: new Date().toISOString()
       });
-      localStorage.setItem('futuristic-todos', JSON.stringify(state));
+      localStorage.setItem('futuristic-todos', JSON.stringify(state.todos));
     },
     toggleTodo: (state, action) => {
-      const todo = state.find((todo) => todo.id === action.payload);
+      const todo = state.todos.find((todo) => todo.id === action.payload);
       if (todo) {
         todo.completed = !todo.completed;
       }
-      localStorage.setItem('futuristic-todos', JSON.stringify(state));
+      localStorage.setItem('futuristic-todos', JSON.stringify(state.todos));
     },
     deleteTodo: (state, action) => {
-      const filtered = state.filter((todo) => todo.id !== action.payload);
-      localStorage.setItem('futuristic-todos', JSON.stringify(filtered));
-      return filtered;
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      localStorage.setItem('futuristic-todos', JSON.stringify(state.todos));
+    },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
     },
   },
 });
 
-export const { addTodo, toggleTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, setFilter } = todosSlice.actions;
 export default todosSlice.reducer;

@@ -1,4 +1,5 @@
 import TodoForm from './TodoForm'
+import TodoFilter from './TodoFilter'
 import TodoTasks from './TodoTasks'
 import './style.css'
 
@@ -16,6 +17,7 @@ const FuturisticTodo = () => {
         </header>
 
         <TodoForm />
+        <TodoFilter />
         <TodoTasks />
       </div>
     </div>

@@ -3,10 +3,16 @@ import { toggleTodo, deleteTodo } from '../features/toggleSlice'
 import './style.css'
 
 const TodoTasks = () => {
-  const todos = useSelector((state) => state.todos)
+  const { todos, filter } = useSelector((state) => state.todos)
   const dispatch = useDispatch()
 
-  if (todos.length === 0) {
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'completed') return todo.completed
+    if (filter === 'notCompleted') return !todo.completed
+    return true
+  })
+
+  if (filteredTodos.length === 0) {
     return (
       <div className="empty-state">
         <div className="hologram-text">NO ACTIVE MISSIONS</div>
@@ -17,7 +23,7 @@ const TodoTasks = () => {
 
   return (
     <div className="tasks-container">
-      {todos.map(todo => (
+      {filteredTodos.map(todo => (
         <div key={todo.id} className={`task-card ${todo.completed ? 'completed' : ''}`}>
           <div className="task-border"></div>
           <div className="task-content">
